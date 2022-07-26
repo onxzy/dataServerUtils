@@ -1,0 +1,7 @@
+{ 
+    "serverUrl" : "https://example.com/",
+    "admin" : {
+        "email": "admin@example.com",
+        "password": "strong-password"
+    }
+}
