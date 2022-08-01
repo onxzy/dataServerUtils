@@ -31,7 +31,7 @@ print('Link number : ' + str(len(dataLinks)))
 # # print(ecgList[0]['value'])
 
 # Get all ECG
-dirname = 'ecgs_' + datetime.now().strftime("%y-%m-%d_%H:%M:%S")
+dirname = 'ecgs_' + datetime.now().strftime("%y-%m-%d_%H%M%S")
 os.mkdir(dirname)
 
 from concurrent.futures import as_completed
@@ -51,5 +51,5 @@ for future in as_completed(futures):
     r = future.result()
     print(future.link + ' | Saving ECGs')
     with open(dirname + '/' + future.link +'.json', 'w') as outfile:
-        outfile.write(r.text)
+        outfile.write(json.dumps((r.json()['list'])))
         print(future.link + ' | Saved')
